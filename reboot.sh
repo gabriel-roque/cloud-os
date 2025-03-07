@@ -1,3 +1,8 @@
+cd elastic
+docker-compose down && docker-compose up -d
+
+cd ..
+
 cd kafka
 docker-compose down && docker-compose up -d
 
