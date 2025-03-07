@@ -12,6 +12,8 @@ services:
       - '1433:1433'
     volumes:
       - sqlserver-data:/var/opt/mssql
+    mem_limit: 512m
+    memswap_limit: 512m
 
 volumes:
   sqlserver-data:
