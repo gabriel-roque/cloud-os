@@ -16,6 +16,23 @@ services:
     mem_limit: 512m
     memswap_limit: 512m
 
+  pgbouncer:
+    image: edoburu/pgbouncer
+    container_name: pgbouncer
+    restart: always
+    environment:
+      DB_HOST: postgres # Aponta para o serviço do PostgreSQL
+      DB_PORT: 5432
+      DB_USER: root
+      DB_PASSWORD: pass@#word
+      DB_NAME: casa-os-postgres
+      MAX_CLIENT_CONN: 100 # Máximo de conexões de clientes ao PgBouncer
+      DEFAULT_POOL_SIZE: 20 # Número máximo de conexões ao PostgreSQL
+    ports:
+      - '6432:6432' # Porta do PgBouncer
+    depends_on:
+      - postgres
+
 volumes:
   postgres_data:
     driver: local
