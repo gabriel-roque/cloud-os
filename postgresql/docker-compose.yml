@@ -13,6 +13,7 @@ services:
       - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./postgresql.conf:/var/lib/postgresql/data/postgresql.conf
     mem_limit: 512m
     memswap_limit: 512m
     networks:
@@ -31,8 +32,8 @@ services:
     volumes:
       - ./userlist.txt:/etc/pgbouncer/userlist.txt
       - ./pgbouncer.ini:/etc/pgbouncer/pgbouncer.ini
-    mem_limit: 2048m
-    memswap_limit: 2048m
+    mem_limit: 512m
+    memswap_limit: 512m
 
 networks:
   database:
